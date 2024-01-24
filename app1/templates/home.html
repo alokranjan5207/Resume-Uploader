@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 {% load static %}
-{% load i18n %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -20,33 +19,30 @@
             <div class="col-sm-8">
             <form action="{% url 'app1:home' %}" method="POST" enctype="multipart/form-data" class="shadow p-5">
                 {% csrf_token %}
-                {{form.as_p}}
-                <input type="submit" value="submit">
-                <!-- {% for fm in form %}
+                {% for fm in form %}
                     <div class="form-group mb-3">
                         {{fm.label_tag}}    {{fm}}
                         <small class="text-danger">{{fm.errors|striptags}}</small>
 
                     </div>
-                {% endfor %} -->
+                {% endfor %}
 
-                <!-- <input type="submit" value="submit" class="btn btn-primary">
+                <input type="submit" value="submit" class="btn btn-primary">
                 {% if form.non_field_errors %}
                     {% for error in form.non_field_errors %}
                         <p class="alert alert-danger my-3">{{error}}</p>
                     {% endfor %}
-                {% endif %} -->
+                {% endif %}
             </form>
             </div>
-            <!-- <div class="col-sm-4">
+            <div class="col-sm-4">
                 <h4 class="text-center mb-3"><u>List of Candidate</u></h4>
                 {% for candidate in candidates %}
-                    {{candidate.id}} 
-                    <a href="#">{{candidate.name}}</a>
+                    {{candidate.id}}  <a href="{% url 'app1:candidate' candidate.id %}">{{candidate.name}}</a>
 
                     <hr>
                 {% endfor %}
-            </div> -->
+            </div>
         </div>
     </div>
     <!-- <form action="" method="POST">
