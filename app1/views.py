@@ -14,11 +14,11 @@ def home(request):
         if form.is_valid(): # All validation rules pass
             candidates=Resume.objects.all()
 
-            form.save()
+            # form.save()
             # messages.add_message(request, messages.success, "Form Sucessfull Filled ")
-            return render(request=request,template_name='home.html', context={'candidates':candidates,'form': form})
-
-            # return render(request=request,template_name='msg.html')#show msg at last
+            # return render(request=request,template_name='home.html', context={'candidates':candidates,'form': form})
+            # return render(request=request,template_name='msg.html')show msg at last
+            return HttpResponseRedirect('form submited!')
     else:
         form = ResumeForm() # An unbound form
 
